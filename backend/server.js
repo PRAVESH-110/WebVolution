@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 
-const allowedOrigins=[ " " || process.env.port]
+const allowedOrigins=[ " " || process.env.port];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
