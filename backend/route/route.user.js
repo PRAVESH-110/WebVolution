@@ -1,5 +1,5 @@
 import express from "express";
-import {User} from "./model/model.user.js"
+import {User} from "../model/model.user.js"
 import {z} from "zod";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const userRouter = express.Router();
-app.use(express.json());
+userRouter.use(express.json());
 
 const signupSchema = z.object({
     email: z.string().email(),
@@ -30,13 +30,10 @@ userRouter.post('/signup',async function(req,res){
             message: validatedData.error.message
         })
     }
-    const existingUser= await User.findOne({email});
 
-    if ( !email || !password){
-        res.status(400).json({
-            message: "enter all the credentials"
-        })
-    }
+    const {email,password, fname, lname}= validatedData.data;
+
+    const existingUser= await User.findOne({email});
 
     if(existingUser){
         return res.status(409).json({
@@ -47,10 +44,10 @@ userRouter.post('/signup',async function(req,res){
     const hashedPassword = await bcrypt.hash(password,10);
 
     await User.create({
-        email:validatedData.email,
+        email:email,
         password:hashedPassword,
-        fname: validatedData.fname,
-        lname: validatedData.lname
+        fname: fname,
+        lname: lname
     })
     return res.status(201).json({
         message:"user created"
@@ -101,4 +98,4 @@ userRouter.post('/signin',async function(req,res){
     })
 })
 
-export default adminRouter;
+export default userRouter;

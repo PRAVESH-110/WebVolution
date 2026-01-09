@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import connectDB from "./config/db.js"
+import userRouter from "./route/route.user.js";
+import scanRouter from "./route/route.scan.js";
+
 
 const app = express();
 app.use(express.json());

@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+const {Schema}= mongoose;
 
 const scanSchema= new mongoose.Schema({
-    id:{
+    userId:{
         type:mongoose.types.ObjectId,
         required:true,
         unique:true,
@@ -15,7 +16,8 @@ const scanSchema= new mongoose.Schema({
     },
     status:{
         type:String,
-        enum:['pending','completed','failed']
+        enum:['pending','completed','failed'],
+        default:'pending'
     },
     createdAt:{
         type:Date,
