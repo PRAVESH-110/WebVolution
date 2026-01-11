@@ -1,10 +1,13 @@
 "use client"
 import Link from 'next/link';
 import React,{useState} from "react"
+import {useAuth} from "../../context/AuthContext";
 
 export default function Navbar() {
 
     const[login, setLogin] = useState(false);
+    const[open, setOpen] = useState(false);
+    const { isAuthenticated, logout } = useAuth();
 
 
     return (
@@ -35,27 +38,44 @@ export default function Navbar() {
             </Link>
         </nav>
 
-        <div className='relative'>
+        <div className="relative">
+      
+      {/* Button */}
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="text-black border rounded-full px-4 py-2 bg-gradient-to-br from-[#FF6B6B] to-[#556270]"
+      >
+        L
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div className="absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-lg border border-gray-200 overflow-hidden z-50">
+          
+          {!isAuthenticated ? (
+            <Link
+              href="/login"
+              className="block px-4 py-2 text-sm hover:bg-gray-100"
+              onClick={() => setOpen(false)}
+            >
+              Login
+            </Link>
+          ) : (
             <button
-                type='button'
-                onClick={() => setLogin(!login)}
-                className='fixed top-1 right-2 text-right m-4 text-black border rounded-full px-4 py-2 hover:cursor-pointer bg-gradient-to-br from-[#FF6B6B] to-[#556270]'>L
+              onClick={() => {
+                logout();
+                setOpen(false);
+              }}
+              className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+            >
+              Logout
             </button>
+          )}
 
-            <div>
-                <Link href='/login'
-                className='block px-4 py-2 text-sm hover:bg-gray-100'>
-                    Login</Link>
-            </div> 
-
-            {login && (
-                <div>
-                   <Link href='/'
-                   className='block px-4 py-2 text-sm hover:bg-gray-100'>
-                    Logout</Link> 
-                </div>
-            )}
         </div>
+      )}
+    </div>
         </div>
     );
 }
