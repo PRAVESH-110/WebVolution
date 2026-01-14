@@ -1,6 +1,11 @@
 'use client';
+import { useState, useEffect } from "react";
 
 export default function Home() {
+
+  const handleSubmit = () => {
+
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-8 py-16 text-center bg-[radial-gradient(circle_at_50%_50%,rgba(100,100,255,0.05)_0%,transparent_50%)]">
       <section className="max-w-[800px] mx-auto">
@@ -20,7 +25,7 @@ export default function Home() {
             className="flex-1 px-6 py-4 rounded-full border border-black/10 bg-white/50 text-base transition-all outline-none focus:border-[#0070f3] focus:ring-4 focus:ring-[#0070f3]/10 focus:bg-white dark:bg-white/5 dark:border-white/10 dark:text-white dark:focus:bg-black/50"
             required
           />
-          <button type="submit" className="px-8 py-4 rounded-full border-0 bg-[#0070f3] text-white font-semibold text-base cursor-pointer transition-all hover:bg-[#0051a2] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,118,255,0.3)] whitespace-nowrap">
+          <button type="submit" className="px-8 py-4 rounded-full border-0 bg-gradient-to-br from-[#7051c3] to-[#ff70cc] text-white font-semibold text-base cursor-pointer transition-all hover:bg-[#0051a2] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,118,255,0.3)] whitespace-nowrap">
             Analyze My Site
           </button>
         </form>

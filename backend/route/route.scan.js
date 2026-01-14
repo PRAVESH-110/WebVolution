@@ -3,6 +3,7 @@ import authMiddleware from "../middleware/authMiddleware.js";
 import {Scan} from "../model/model.scan.js"
 import {z} from "zod";
 import processScan from "../jobHandler/processScan.js";
+import mongoose from "mongoose";
 
 
 const scanRouter = express.Router();
@@ -11,7 +12,7 @@ const scanSchema= z.object({
     url:z.string().url("invalid url"),
 })
 
-scanRouter.post("/scan",authMiddleware,async function(req,res){
+scanRouter.post("/",authMiddleware,async function(req,res){
     const validatedData= scanSchema.safeParse(req.body);
 
     if(!validatedData.success){
@@ -40,16 +41,17 @@ scanRouter.post("/scan",authMiddleware,async function(req,res){
     })
 })
 
-scanRouter.get('scan/:scanId',async function (req,res){
+scanRouter.get('/:scanId',authMiddleware,async function (req,res){
     const scanId= req.params.scanId;
-
-    const scan =await Scan.findById(scanId);
 
     if(!mongoose.Types.ObjectId.isValid(scanId)){
         return res.status(400).json({
             message:"invalid scan id"
         })
     }
+
+    const scan =await Scan.findById(scanId);
+
     if(!scan){
         return res.status(404).json({
             message:"scan not found"
