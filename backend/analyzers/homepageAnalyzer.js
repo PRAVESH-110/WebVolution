@@ -1,5 +1,4 @@
 // analyzers/homepageAnalyzer.js
-import cheerio from "cheerio";
 
 export default function homepageAnalyzer(html) {
   const $ = cheerio.load(html);
