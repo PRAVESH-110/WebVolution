@@ -12,14 +12,10 @@ export default function Home() {
   const handleSubmit = async () => {
     try{
     setLoading(true)
-    const startScan= await scanRequest(url);  
-    const scanId= Response.scanId;
+    const startScan= await scanRequest(inputUrl);  
+    const scanId= startScan.scanId;
     setScanid(scanId);
 
-    const getResult= await getScanById(scanId);
-    if(getResult.ok){
-      setLoading(false);
-    }
     }
     catch(err){
       setLoading(false);
