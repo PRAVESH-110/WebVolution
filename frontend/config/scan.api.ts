@@ -2,7 +2,7 @@ import { apiEndpoints } from "./api";
 
 
 export async function scanRequest(url: string) {
-  const token=localStorage.getItem("token")
+  const token = localStorage.getItem("token")
   const response = await fetch(apiEndpoints.scan.create, {
     method: "POST",
     headers: {
