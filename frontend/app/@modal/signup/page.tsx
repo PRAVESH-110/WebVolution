@@ -27,9 +27,9 @@ export default function SignUp() {
                 formData.get("fname") as string,
                 formData.get("lname") as string
             )
-            if (data.token) {
-                login(data.token); // optional (auto-login)
-            }
+            // if (data.token) {
+            //     login(data.token); 
+            // }
             router.back();
         }
         catch (err: any) {
@@ -41,24 +41,24 @@ export default function SignUp() {
     }
     return (
         <Modal>
-            <div className="relative overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-4 sm:p-6 md:p-8 shadow-2xl 
+            <div className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-2 sm:p-4 md:p-6 shadow-2xl
              w-full  max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl
-            max-h-[90vh] overflow-y-auto
+            max-h-[90vh]
 
             dark:bg-black/40 dark:border-white/10">
 
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#556270] to-[#FF6B6B]" />
 
-                <div className="text-center mb-4 sm:mb-6">
-                    <h2 className="text-3xl font-bold bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent mb-2">
+                <div className="text-center mb-2 sm:mb-4">
+                    <h2 className="text-2xl font-bold bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent mb-1">
                         Get Started
                     </h2>
-                    <p className="text-white/60 text-sm">
+                    <p className="text-white/60 text-xs">
                         Join checkmysite and boost your conversions.
                     </p>
                 </div>
 
-                <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit}>
+                <form className="space-y-2 sm:space-y-3" onSubmit={handleSubmit}>
                     <div>
                         <label className="block text-xs font-semibold text-white/50 uppercase tracking-wider mb-2 ml-1">
                             First Name
@@ -118,13 +118,13 @@ export default function SignUp() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-[#7051c3] to-[#ff70cc] text-white font-bold text-lg shadow-lg shadow-[#556270]/20 hover:shadow-[#556270]/40 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-60"
+                        className="w-full py-3 mt-1 rounded-xl bg-gradient-to-r from-[#7051c3] to-[#ff70cc] text-white font-bold text-base shadow-lg shadow-[#556270]/20 hover:shadow-[#556270]/40 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-60"
                     >
                         {loading ? "Creating account..." : "Create Account"}
                     </button>
                 </form>
 
-                <div className="mt-8 text-center text-sm text-white/50">
+                <div className="mt-4 text-center text-xs text-white/50">
                     Already have an account?{" "}
                     <Link
                         href="/signin"

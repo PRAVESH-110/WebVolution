@@ -33,16 +33,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <Navbar />
-          <ToastProvider>
+        <ToastProvider>
+          <AuthProvider>
+            <Navbar />
             <main style={{ paddingTop: '80px', minHeight: '100vh' }}>
               {children}
             </main>
             {modal}
-          </ToastProvider>
-          <Footer />
-        </AuthProvider>
+            <Footer />
+          </AuthProvider>
+        </ToastProvider>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       </body>
     </html>

@@ -94,6 +94,11 @@ userRouter.post('/signin', async function (req, res) {
     return res.status(200).json({
         message: "signin successful",
         token: token,
+        user: {
+            fname: user.fname,
+            lname: user.lname,
+            email: user.email
+        }
     })
 })
 

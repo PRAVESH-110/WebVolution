@@ -252,7 +252,7 @@ export default function Home() {
       )}
 
       {!scanResult && !loading && (
-        <section className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 max-w-[1000px] w-full mt-24 mx-auto">
+        <section className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 max-w-[1000px] w-full mt-5 sm:mt-5 md:mt-6 lg:mt-2 mx-auto">
           <div className="p-8 bg-white/[0.03] border border-white/10 rounded-2xl text-left transition-transform duration-200 hover:-translate-y-1 hover:bg-white/5">
             <h3 className="text-xl font-bold mb-2">Deterministic Scoring</h3>
             <p className="text-[0.95rem] opacity-70 leading-normal">No random LLM guesses. Our scoring engine follows strict, repeatable heuristic rules.</p>

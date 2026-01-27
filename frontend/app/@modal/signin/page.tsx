@@ -6,9 +6,11 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import { signinRequest } from '../../../config/auth.api';
+import { useToast } from '../../providers/ToastProvider';
 
 export default function SignIn() {
     const { login } = useAuth();
+    const { showToast } = useToast();
     const router = useRouter();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -26,7 +28,8 @@ export default function SignIn() {
 
         try {
             const response = await signinRequest(email, password);
-            login(response.token);
+            login(response.token, response.user);
+            showToast("Successfully signed in!", "success");
             router.back();
             console.log(response.token);
         }
