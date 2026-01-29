@@ -41,7 +41,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
         >
             <div
                 ref={wrapper}
-                className="w-full max-w-lg mx-auto"
+                className="w-full h-[90%]  max-w-md mx-auto"
             >
                 {children}
             </div>

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { useAuth } from "../../context/AuthContext";
 import SignIn from "../@modal/signin/page";
 import { useToast } from "../providers/ToastProvider";
+import Userbtn from './Userbtn';
 
 export default function Navbar() {
 
@@ -72,9 +73,14 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="z-[1001] hover:cursor-pointer text-black border rounded-full px-4 py-2 bg-gradient-to-br from-[#7051c3] to-[#ff70cc]"
+              className={`z-[1001] relative flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm shadow-md transition-all duration-300 border-[1.5px]
+                ${open ? 'ring-2 ring-purple-400 scale-105' : 'active:scale-95'}
+                bg-gradient-to-br from-[#7051c3] to-[#ff70cc] border-white/20 text-white
+              `}
             >
-              {isAuthenticated && user?.fname ? user.fname.charAt(0).toUpperCase() : "L"}
+              {isAuthenticated && user?.fname ? user.fname.charAt(0).toUpperCase() : (
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              )}
             </button>
             {/* Mobile Dropdown */}
             {open && (
@@ -95,47 +101,7 @@ export default function Navbar() {
       </nav>
 
       {/* Desktop L Button (Outside Navbar, Fixed Position) */}
-      <div ref={dropdownRef} className="hidden md:block fixed right-4 top-5 z-[1000]">
-        <button
-          type="button"
-          onClick={() => setOpen(!open)}
-          className="z-[1001] hover:cursor-pointer text-black border rounded-full px-4 py-2 bg-gradient-to-br from-[#7051c3] to-[#ff70cc]"
-        >
-          {isAuthenticated && user?.fname ? user.fname.charAt(0).toUpperCase() : "L"}
-        </button>
-
-        {open && (
-          <div className="absolute right-0 mt-2 w-40 rounded-xl bg-white shadow-lg border border-gray-200 overflow-hidden z-50">
-            {!isAuthenticated ? (
-              <div>
-                <Link
-                  href="/signin"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={() => setOpen(false)}
-                >
-                  Login
-                </Link>
-                <Link href="/signup"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={() => setOpen(false)}>
-                  Signup
-                </Link>
-              </div>
-            ) : (
-              <button
-                onClick={() => {
-                  logout();
-                  setOpen(false);
-                  showToast("Successfully logged out!", "success");
-                }}
-                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-              >
-                Logout
-              </button>
-            )}
-          </div>
-        )}
-      </div>
+      <Userbtn />
     </div>
   );
 }

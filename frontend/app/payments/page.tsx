@@ -190,11 +190,11 @@ function PaymentContent() {
     }
 
     return (
-        <div className="max-w-lg mx-auto mt-10 md:mt-24">
-            <div className="relative p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div className="max-w-lg mx-auto ">
+            <div className="relative p-8 rounded-3xl border border-white/10 bg-white/5 mb-5 md:mb-15 lg:mb-20 backdrop-blur-xl shadow-2xl overflow-hidden">
                 {/* Background Decoration */}
-                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 -mr-16 -mt-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 -ml-16 -mb-10 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
 
                 <div className="relative z-10 text-center">
                     <h1 className="text-3xl font-extrabold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -228,7 +228,7 @@ function PaymentContent() {
                         <button
                             onClick={handleConfirm}
                             disabled={loading}
-                            className={`w-full py-3.5 rounded-xl font-bold text-white shadow-lg transition-all duration-200
+                            className={`w-full py-3.5 rounded-xl font-bold text-white shadow-lg hover:cursor-pointer transition-all duration-200
                                 ${loading
                                     ? "bg-gray-600 cursor-not-allowed opacity-70"
                                     : "bg-gradient-to-r from-[#7051c3] to-[#ff70cc] hover:shadow-purple-500/25 hover:-translate-y-0.5"

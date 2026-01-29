@@ -43,8 +43,7 @@ export default function SignIn() {
     }
     return (
         <Modal>
-            <div className="relative overflow-hidden bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl dark:bg-black/40 dark:border-white/10">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7051c3] to-[#ff70cc]"></div>
+            <div className="relative overflow-hidden bg-white/10 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-2xl dark:bg-black/40 dark:border-white/30">
 
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent mb-2">
@@ -83,7 +82,7 @@ export default function SignIn() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="hover:cursor-pointer w-full py-4 mt-2 rounded-xl bg-gradient-to-r from-[#7051c3] to-[#ff70cc] text-white font-bold text-lg shadow-lg shadow-[#FF6B6B]/20 hover:shadow-[#FF6B6B]/40 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="hover:cursor-pointer w-full py-3 mt-2 rounded-xl bg-gradient-to-r from-[#7051c3] to-[#ff70cc] text-white font-bold text-base shadow-lg shadow-[#FF6B6B]/20 hover:shadow-[#FF6B6B]/40 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? "Signing In..." : "Sign In"}
                     </button>
